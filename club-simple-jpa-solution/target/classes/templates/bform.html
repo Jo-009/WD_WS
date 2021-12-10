@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Booking Form</title>
+</head>
+
+<body>
+	<h1>Booking Form Submit Page </h1>
+	<form th:object="${booking}" th:action="@{/booking/addbooking}" method="POST">
+		<fieldset>
+		   <input type="hidden" th:field="*{bookingId}"/>
+		  </fieldset>
+		
+		<fieldset>
+			Facility : <input type="text" th:field="*{facility.name}" />
+		</fieldset>
+		<fieldset>
+			Member(First Name): <input type="text" th:field="*{member.firstname}" />
+		</fieldset>
+		<fieldset>
+			Member(Second Name): <input type="text" th:field="*{member.secondname}" />
+		</fieldset>
+		<fieldset>
+			From Date(DD/MM/YYYY): <input type="text" th:field="*{fromDate}" />
+		</fieldset>
+		<fieldset>
+			To Date(DD/MM/YYYY): <input type="text" th:field="*{toDate}" />
+		</fieldset>
+
+		<fieldset>
+			<input type="submit" value="SAVE"/>
+			&nbsp; 
+			<input type="reset" value="RESET"/>
+		</fieldset>
+	</form>
+
+</body>
+
+</html>

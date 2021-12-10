@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Listing page</title>
+</head>
+
+<body>
+	<h1>CRUD List Demo </h1>
+
+	<h2>Add a booking</h2>
+	<p><a href="bform.html" th:href="@{/booking/load}" th:utext="#{booking.add}">Add</a></p>
+
+	<table th:unless="${#lists.isEmpty(bookings)}" border="1 pt">
+		<tr>
+			<th>ID</th>
+			<th>Facility</th>
+			<th>Member(First Name)</th>
+			<th>Member(Second Name)</th>
+			<th>From Date</th>
+			<th>To Date</th>
+			<th>Delete</th>
+		</tr>
+		<tr th:each="booking:${bookings}">
+			<td th:text="${booking.bookingId}">ID</td>
+			<td th:text="${booking.facility.name}">Facility</td>
+						<td th:text="${booking.member.firstname}">Member(First Name)</td>
+			<td th:text="${booking.member.secondname}">Member(Second Name)</td>
+			<td th:text="${booking.fromDate}">From Date(DD/MM/YYYY)</td>
+			<td th:text="${booking.toDate}">To Date(DD/MM/YYYY)</td>
+			<td><a href="bform.html" th:href="@{/booking/editload/}+${booking.bookingId}"
+					th:utext="#{booking.edit}">Edit</a></td> >
+			<td><a href="bform.html" th:href="@{/booking/deletebooking/}+${booking.bookingId}"
+					th:utext="#{booking.delete}">Delete</a></td>>
+		</tr>
+	</table>
+</body>
+
+</html>
